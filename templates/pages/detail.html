@@ -1,0 +1,91 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <style>
+        img{
+            width: 100px;
+        }
+    </style>
+
+<div class="container">
+    <section>
+        <div class="row">
+            <div class="col-lg-8 p-3">
+                <h3 class="fw-bold">&nbsp;{{blog.title}}</h3>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="text-muted mb-2 mt-3"><i class="far fa-clock"></i>{{blog.created_at}}</p>
+                    <p class="text-muted mb-2 mt-3"><i class="far fa-eye"></i>{{blog.views}}</p>
+                </div>
+                <div class="hl"></div>
+
+                <p>&nbsp;&nbsp;{{blog.content|safe}}</p>
+
+                <div class="related-story mt-5">
+                    <h5 class="fw-bold">เรื่องที่เกี่ยวข้อง</h5>
+                    <div class="d-flex flex-wrap">
+                        {% for tag in blog.tags.all %}
+                        <a href="{{tag.get_blog_by_tag}}" class="related-blog-tag-badge">
+                            {{tag.name}}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 ps-3">
+                <div class="top-story p-3 mt-4">
+                    <h3>บทความที่เกี่ยวข้อง</h3>
+                    {% for related_blog in related_blogs %}
+                    <div class="top-story-list-tile row">
+                        <img class="col-6 top-story-img" src="{{related_blog.thumbnail.url}}" alt="" width="120"
+                            height="100">
+                        <div class="col-6 p-0 justify-content-between">
+                            <p class="top-story-title">{{related_blog.title}}</p>
+                            <h6 class="text-muted my-2 d-flex align-items-center">
+                                <i class="far fa-clock"></i>
+                                {{related_blog.created_at}}
+                            </h6>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <div class="most-read p-3 mt-4">
+                    <h3>บทความที่มีคนอ่านมากที่สุด</h3>
+                    {% for popular_blog in popular_blogs %}
+                    {% if forloop.counter == 1 %}
+                    <a href="{{popular_blog.get_blog_detail}}" style="text-decoration: none; color: black;">
+                        <div class="most-read-list-tile">
+                            <img src="{{popular_blog.thumbnail.url}}" alt="" width="100%">
+                            <div class="d-flex align-items-center px-2">
+                                <span class="text-center most-read-rank">{{forloop.counter}}</span>
+                                <div class="vl ms-2 me-3"></div>
+                                <div class="align-items-start">
+                                    <p class="most-read-title">{{popular_blog.title}}</p>
+                                    <h6 class="text-muted d-flex align-items-center justify-content-start"><i
+                                            class="far fa-eye m-0 me-2"></i>{{popular_blog.views}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a href="{{popular_blog.get_blog_detail}}" style="text-decoration: none; color: black;">
+                        <div class="d-flex align-items-center most-read-list-tile">
+                            <span class="text-center most-read-rank px-2">{{forloop.counter}}</span>
+                            <div class="vl mx-3"></div>
+                            <div class="align-items-start">
+                                <p class="most-read-title">{{popular_blog.title}}</p>
+                                <h6 class="text-muted d-flex align-items-center justify-content-start"><i
+                                        class="far fa-eye m-0 me-2"></i>{{popular_blog.views}}</h6>
+                            </div>
+                        </div>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}

@@ -1,0 +1,176 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hearder-top">
+    <div class="container">
+        <div class="row">
+            {% for random_blog in random_blogs %}
+            {% include 'components/blog_box.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 pe-3">
+            <section class="content-section">
+                <div class="news-section" id="recent-post">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="section-heading">บทความล่าสุด</h2>
+                        <a href="{% url 'get_blog_by_ordering' 'recent_blogs' %}" class="btn btn-sm rounded-pill">See
+                            All</a>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                                <a href="{{first_recent_blog.get_blog_detail}}" class="image-container-first col-sm-7">
+                                    <img class="img-fluid" src="{{first_recent_blog.thumbnail.url}}" alt="..." />
+                                </a>
+                            <div class="content-container-header col-sm-5">
+                                <div class="d-flex justify-content-between align-items-center badge-wrapper">
+                                    <div>
+                                        {% for category in first_recent_blog.categories.all %}
+                                        <a href="{{category.get_blog_by_category}}"
+                                            class="badge badge-category text-uppercase"
+                                            style="background-color: {{category.color}}; border-radius: 2px;">
+                                            {{category.name}}
+                                        </a>
+                                        {% endfor %}
+                                    </div>
+                                    <span class="d-flex align-items-center">
+                                        <i class="fas fa-eye mx-2"></i>
+                                        <span class="small">{{first_recent_blog.views}}</span>
+                                    </span>
+                                </div>
+                                <h6 class="text-muted">{{first_recent_blog.created_at}}</h6>
+                                <h5>
+                                    <a href="{{first_recent_blog.get_blog_detail}}" class="text-title my-2">
+                                        {{first_recent_blog.title}}
+                                    </a>
+                                </h5>
+                                <p class="text-content">{{first_recent_blog.short_desc}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            {% for recent_blog in second_recent_blog %}
+                            <div style="text-decoration: none; color: black" class="col-lg-6 col-sm-6 mb-4">
+                                <a href="{{recent_blog.get_blog_detail}}">
+                                    <div href="{{recent_blog.get_blog_detail}}" class="image-container">
+                                        <img class="img-fluid" src="{{recent_blog.thumbnail.url}}" alt="..." />
+                                    </div>
+                                </a>
+                                <div class="content-container">
+                                    <div class="d-flex justify-content-between align-items-center badge-wrapper">
+                                        <div>
+                                            {% for category in recent_blog.categories.all %}
+                                            <a href="{{category.get_blog_by_category}}"
+                                                class="badge badge-category text-uppercase"
+                                                style="background-color: {{category.color}}; border-radius: 2px;">
+                                                {{category.name}}
+                                            </a>
+                                            {% endfor %}
+                                        </div>
+                                        <span class="d-flex align-items-center">
+                                            <i class="fas fa-eye mx-2"></i>
+                                            <span class="small">{{recent_blog.views}}</span>
+                                        </span>
+                                    </div>
+                                    <p class="text-muted m-0">{{recent_blog.created_at}}</p>
+                                    <h5><a href="{{recent_blog.get_blog_detail}}"
+                                            class="sub-header">{{recent_blog.title}}</a>
+                                    </h5>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-section" id="popular-post">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="section-heading">บทความยอดนิยม</h2>
+                        <a href="{% url 'get_blog_by_ordering' 'popular_blogs' %}" class="btn btn-sm rounded-pill">See
+                            All</a>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <a href="{{first_popular_blog.get_blog_detail}}" class="image-container-first col-sm-7">
+                                <img class="img-fluid" src="{{first_popular_blog.thumbnail.url}}" alt="..." />
+                            </a>
+                            <div class="content-container-header col-sm-5">
+                                <div class="d-flex justify-content-between align-items-center badge-wrapper">
+                                    <div>
+                                        {% for category in first_popular_blog.categories.all %}
+                                        <a href="{{category.get_blog_by_category}}"
+                                            class="badge badge-category text-uppercase"
+                                            style="background-color: {{category.color}}; border-radius: 2px;">
+                                            {{category.name}}
+                                        </a>
+                                        {% endfor %}
+                                    </div>
+                                    <span class="d-flex align-items-center">
+                                        <i class="fas fa-eye mx-2"></i>
+                                        <span class="small">{{first_popular_blog.views}}</span>
+                                    </span>
+                                </div>
+                                <h6 class="text-muted">{{first_popular_blog.created_at}}</h6>
+                                <h5>
+                                    <a href="{{first_popular_blog.get_blog_detail}}"
+                                        class="text-title my-2">{{first_popular_blog.title}}</a>
+                                </h5>
+                                <p class="text-content">{{first_popular_blog.short_desc}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            {% for popular_blog in second_popular_blogs %}
+                            <div class="col-lg-6 col-sm-6 mb-4">
+                                <a href="{{popular_blog.get_blog_detail}}">
+                                    <div href="{{popular_blog.get_blog_detail}}" class="image-container">
+                                        <img class="img-fluid" src="{{popular_blog.thumbnail.url}}" alt="..." />
+                                    </div>
+                                </a>
+                                <div class="content-container">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div>
+                                            {% for category in popular_blog.categories.all %}
+                                            <a class="badge badge-category text-uppercase"
+                                                style="background-color: {{category.color}}; border-radius: 2px;">
+                                                {{category.name}}
+                                            </a>
+                                            {% endfor %}
+                                        </div>
+                                        <span class="d-flex align-items-center">
+                                            <i class="fas fa-eye mx-2"></i>
+                                            <span class="small">{{popular_blog.views}}</span>
+                                        </span>
+                                    </div>
+                                    <p class="text-muted m-0">{{popular_blog.created_at}}</p>
+                                    <h5><a href="{{popular_blog.get_blog_detail}}"
+                                            class="sub-header">{{popular_blog.title}}</a>
+                                    </h5>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="col-lg-4 ps-3 align-items-center">
+            <section class="sidebar-section">
+                {% include 'components/social_bar.html' %}
+                {% include 'components/category_bar.html' %}
+                <div class="fb-page mt-3" data-href="https://www.facebook.com/TurnDev-102875672216895"
+                    data-tabs="timeline" data-width="" data-height="" data-small-header="true"
+                    data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+                    <blockquote cite="https://www.facebook.com/TurnDev-102875672216895" class="fb-xfbml-parse-ignore"><a
+                            href="https://www.facebook.com/TurnDev-102875672216895">TurnDev</a></blockquote>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

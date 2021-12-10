@@ -1,0 +1,14 @@
+<div class="category-bar p-3 shadow-sm">
+    <h2>Categories</h2>
+    <div class="categories mt-4 mb-2">
+        {% for category in categories %}
+        <a href="{{category.get_blog_by_category}}" class="category d-flex justify-content-between align-items-center">
+            <span class="category-title">{{category.name}}</span>
+            <div class="badge badge-category text-uppercase" style="background-color: {{category.color}}; border-radius: 2px;">
+                {{category.blog_length}}
+            </div>
+        </a>
+        <hr class="horizontal-rule my-2 bg-secondary">
+        {% endfor %}
+    </div>
+</div>
