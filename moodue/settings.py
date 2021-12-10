@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-jy6xqmu0%9zxcwk8*_)#4#r0vj23xc3@31l1io+ju*n*g#tvvc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'moodue.herokuapp.com']
+ALLOWED_HOSTS = ['moodue.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
