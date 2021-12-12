@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 
 
 def index(request):
+    print("test")
     return render(request, "pages/index.html")
     
 def ordered_blog(request, type=None):

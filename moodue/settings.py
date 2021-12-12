@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jy6xqmu0%9zxcwk8*_)#4#r0vj23xc3@31l1io+ju*n*g#tvvc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'moodue.herokuapp.com']
 
@@ -71,7 +71,7 @@ TEMPLATES = [
                 'home.context_processors.popular_blogs',
                 'home.context_processors.recent_blogs',
                 'home.context_processors.random_blog',
-                'home.context_processors.tech_blogs',
+                # 'home.context_processors.tech_blogs',
                 # 'home.context_processors.business_blogs',
                 # 'home.context_processors.game_blogs',
                 # 'home.context_processors.social_blogs',
@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'moodue.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'soytech',
+        'NAME': 'moodue',
         'USER': 'root',
         'PASSWORD': 'peerapong123',
     }

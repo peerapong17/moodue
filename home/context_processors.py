@@ -24,41 +24,41 @@ def recent_blogs(request):
     return dict(recent_blogs=recent_blogs, first_recent_blog=first_recent_blog, second_recent_blog=second_recent_blog)
 
 
-def tech_blogs(request):
-    tech_category = Category.objects.get(slug="tech")
-    blogs = tech_category.blog_set.all()
-    first_tech_blog = blogs[0]
-    tech_blogs = blogs[1:]
-    return dict(first_tech_blog=first_tech_blog, tech_blogs=tech_blogs)
+# def tech_blogs(request):
+#     tech_category = Category.objects.get(slug="tech")
+#     blogs = tech_category.blog_set.all()
+#     first_tech_blog = blogs[0]
+#     tech_blogs = blogs[1:]
+#     return dict(first_tech_blog=first_tech_blog, tech_blogs=tech_blogs)
 
 
-# def business_blogs(request):
-#     business_category = Category.objects.get(slug="business")
-#     blogs = business_category.blog_set.all()
-#     first_business_blog = blogs[0]
-#     business_blogs = blogs[1:]
-#     return dict(first_business_blog=first_business_blog, business_blogs=business_blogs)
+# # def business_blogs(request):
+# #     business_category = Category.objects.get(slug="business")
+# #     blogs = business_category.blog_set.all()
+# #     first_business_blog = blogs[0]
+# #     business_blogs = blogs[1:]
+# #     return dict(first_business_blog=first_business_blog, business_blogs=business_blogs)
 
 
-# def game_blogs(request):
-#     game_category = Category.objects.get(slug="game")
-#     blogs = game_category.blog_set.all()
-#     first_game_blog = blogs[0]
-#     game_blogs = blogs[1:]
-#     return dict(first_game_blog=first_game_blog, game_blogs=game_blogs)
+# # def game_blogs(request):
+# #     game_category = Category.objects.get(slug="game")
+# #     blogs = game_category.blog_set.all()
+# #     first_game_blog = blogs[0]
+# #     game_blogs = blogs[1:]
+# #     return dict(first_game_blog=first_game_blog, game_blogs=game_blogs)
 
 
-# def social_blogs(request):
-#     social_category = Category.objects.get(slug="social")
-#     blogs = social_category.blog_set.all()
-#     first_social_blog = blogs[0]
-#     social_blogs = blogs[1:]
-#     return dict(first_social_blog=first_social_blog, social_blogs=social_blogs)
+# # def social_blogs(request):
+# #     social_category = Category.objects.get(slug="social")
+# #     blogs = social_category.blog_set.all()
+# #     first_social_blog = blogs[0]
+# #     social_blogs = blogs[1:]
+# #     return dict(first_social_blog=first_social_blog, social_blogs=social_blogs)
 
 
-# def movie_blogs(request):
-#     movie_category = Category.objects.get(slug="movie")
-#     blogs = movie_category.blog_set.all()
-#     first_movie_blog = blogs[0]
-#     movie_blogs = blogs[1:]
-#     return dict(first_movie_blog=first_movie_blog, movie_blogs=movie_blogs)
+# # def movie_blogs(request):
+# #     movie_category = Category.objects.get(slug="movie")
+# #     blogs = movie_category.blog_set.all()
+# #     first_movie_blog = blogs[0]
+# #     movie_blogs = blogs[1:]
+# #     return dict(first_movie_blog=first_movie_blog, movie_blogs=movie_blogs)
