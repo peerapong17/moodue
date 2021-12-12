@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import django_heroku
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -88,12 +89,13 @@ WSGI_APPLICATION = 'moodue.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'moodue',
-        'USER': 'root',
-        'PASSWORD': 'peerapong123',
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'moodue',
+    #     'USER': 'root',
+    #     'PASSWORD': 'peerapong123',
+    # }
 }
 
 
