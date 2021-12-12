@@ -5,6 +5,7 @@ def categories(request):
     categories = Category.objects.all()
     return dict(categories=categories)
 
+
 def random_blog(request):
     random_blogs = Blog.objects.order_by('?').all()[:2]
     return dict(random_blogs=random_blogs)
@@ -15,7 +16,6 @@ def popular_blogs(request):
     first_popular_blog = popular_blogs[0]
     second_popular_blogs = popular_blogs[1:]
     return dict(popular_blogs=popular_blogs, first_popular_blog=first_popular_blog,  second_popular_blogs=second_popular_blogs)
-
 
 def recent_blogs(request):
     recent_blogs = Blog.objects.all().order_by("-created_at")[0:3]

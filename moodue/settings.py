@@ -91,10 +91,12 @@ WSGI_APPLICATION = 'moodue.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     #     'NAME': 'moodue',
-    #     'USER': 'root',
-    #     'PASSWORD': 'peerapong123',
+    #     'USER': 'postgres',
+    #     'PASSWORD': '123123moo',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432'
     # }
 }
 
