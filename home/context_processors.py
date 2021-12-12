@@ -7,20 +7,40 @@ def categories(request):
 
 
 def random_blog(request):
-    random_blogs = Blog.objects.order_by('?').all()[:2]
+    blogs = Blog.objects.order_by('?').all()
+    random_blogs = []
+    
+    if blogs:
+        random_blogs = blogs[:2]
+        
     return dict(random_blogs=random_blogs)
 
 
 def popular_blogs(request):
-    popular_blogs = Blog.objects.all().order_by("-views")[0:3]
-    first_popular_blog = popular_blogs[0]
-    second_popular_blogs = popular_blogs[1:]
+    blogs = Blog.objects.all().order_by("-views")
+    
+    popular_blogs = []
+    first_popular_blog = []
+    second_popular_blogs = []
+    
+    if blogs:
+        popular_blogs = blogs[0:3]
+        first_popular_blog = popular_blogs[0]
+        second_popular_blogs = popular_blogs[1:]
+
     return dict(popular_blogs=popular_blogs, first_popular_blog=first_popular_blog,  second_popular_blogs=second_popular_blogs)
 
 def recent_blogs(request):
-    recent_blogs = Blog.objects.all().order_by("-created_at")[0:3]
-    first_recent_blog = recent_blogs[0]
-    second_recent_blog = recent_blogs[1:]
+    blogs = Blog.objects.all().order_by("-created_at")
+    recent_blogs = []
+    first_recent_blog = []
+    second_recent_blog = []
+    
+    if blogs:
+        recent_blogs = blogs[0:3]
+        first_recent_blog = recent_blogs[0]
+        second_recent_blog = recent_blogs[1:]
+
     return dict(recent_blogs=recent_blogs, first_recent_blog=first_recent_blog, second_recent_blog=second_recent_blog)
 
 
