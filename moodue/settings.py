@@ -88,17 +88,21 @@ WSGI_APPLICATION = 'moodue.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'moodue',
-    #     'USER': 'postgres',
-    #     'PASSWORD': '123123moo',
-    #     'HOST': 'localhost',
-    #     'PORT': '5432'
-    # }
+    # 'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'moodue',
+        'USER': 'postgres',
+        'PASSWORD': '123123moo',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
 }
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
