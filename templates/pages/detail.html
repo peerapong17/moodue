@@ -3,12 +3,6 @@
 
 {% block content %}
 
-    <style>
-        img{
-            width: 100px;
-        }
-    </style>
-
 <div class="container">
     <section>
         <div class="row">
@@ -55,9 +49,8 @@
                     <h3>บทความที่มีคนอ่านมากที่สุด</h3>
                     {% for popular_blog in popular_blogs %}
                     {% if forloop.counter == 1 %}
-                    <a href="{{popular_blog.get_blog_detail}}" style="text-decoration: none; color: black;">
                         <div class="most-read-list-tile">
-                            <img src="{{popular_blog.thumbnail.url}}" alt="" width="100%">
+                            <img src="{{popular_blog.thumbnail.url}}" alt="{{popular_blog.title}}" width="100%">
                             <div class="d-flex align-items-center px-2">
                                 <span class="text-center most-read-rank">{{forloop.counter}}</span>
                                 <div class="vl ms-2 me-3"></div>
@@ -68,7 +61,6 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
                     {% else %}
                     <a href="{{popular_blog.get_blog_detail}}" style="text-decoration: none; color: black;">
                         <div class="d-flex align-items-center most-read-list-tile">
